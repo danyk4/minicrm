@@ -8,32 +8,40 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                @if (session('success'))
+                    <div class="py-4 px-6 bg-emerald-200 text-center">
+                        {{ session('success') }}
+                    </div>
+                @endif
                 <div class="p-6 text-gray-900">
+                    <a href="{{ route('users.create') }}" class="underline">Add new user</a>
                     <div class="px-3 py-4 flex justify-center">
-                        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                            <tbody>
-                                <tr class="">
-                                    <th class="px-6 py-3">Fist Name</th>
-                                    <th class="px-6 py-3">Last Name</th>
-                                    <th class="px-6 py-3">Email</th>
-                                    <th class="px-6 py-3">Role</th>
-                                    <th></th>
+                        <table class="w-full table-auto mt-4">
+                            <thead>
+                                <tr class="mb-4">
+                                    <td class="font-bold">Fist Name</td>
+                                    <td class="font-bold">Last Name</td>
+                                    <td class="font-bold">Email</td>
+                                    <td class="font-bold">Role</td>
+                                    <td></td>
                                 </tr>
+                            </thead>
+                            <tbody>
                                 @foreach($users as $user)
-                                <tr class="bg-white dark:bg-gray-800 dark:border-gray-700">
-                                    <td class="px-6 py-4">
+                                <tr class="">
+                                    <td class="">
                                         {{ $user->first_name }}
                                     </td>
-                                    <td class="px-6 py-4">
+                                    <td class="">
                                         {{ $user->last_name }}
                                     </td>
-                                    <td class="px-6 py-4">
+                                    <td class="">
                                         {{ $user->email }}
                                     </td>
-                                    <td class="px-6 py-4">
+                                    <td class="">
                                         user
                                     </td>
-                                    <td class="p-3 px-5 flex justify-end">
+                                    <td class="">
                                         <button type="button"
                                                 class="mr-3 text-sm bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline">Save</button><button
                                             type="button"
