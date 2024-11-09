@@ -42,10 +42,12 @@
                                         user
                                     </td>
                                     <td class="">
-                                        <button type="button"
-                                                class="mr-3 text-sm bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline">Save</button><button
-                                            type="button"
-                                            class="text-sm bg-red-500 hover:bg-red-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline">Delete</button>
+                                        <a href="{{ route('users.edit', $user) }}" class="mr-3 text-sm bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline">Edit</a>
+                                        <form method="POST" action="{{ route('users.destroy', $user) }}" onsubmit="return confirm('Are you sure?')" class="inline-block">
+                                            @method('DELETE')
+                                            @csrf
+                                            <button type="submit" class="text-sm bg-red-500 hover:bg-red-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline">Delete</button>
+                                        </form>
                                     </td>
                                 </tr>
                                 @endforeach
